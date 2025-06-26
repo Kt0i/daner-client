@@ -1,0 +1,846 @@
+:root {
+    --primary: #6c5ce7; /* Фиолетовый */
+    --secondary: #00b894; /* Зеленый */
+    --accent-dark: #3a1c71; /* Темный оттенок primary для фона или теней */
+    --dark: #121212; /* Почти черный */
+    --light: #f5f6fa; /* Почти белый */
+    --gray: #2d3436; /* Темно-серый */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Полупрозрачный фон для карточек */
+    --border-color: rgba(255, 255, 255, 0.1); /* Цвет границы */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Используем Inter, который вы подключили */
+}
+
+body {
+    background-color: var(--dark); /* Темный фон */
+    color: var(--light); /* Светлый текст */
+    /* ОБНОВЛЕННОЕ ФОНОВОЕ ИЗОБРАЖЕНИЕ */
+    background-image: url('https://images.unsplash.com/photo-1579547621865-c3511f582c7f?q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&h=1080&fit=crop&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MXx8ZGFyayUyMGZ1dHVyaXN0aWMlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTcxOTQ5NjA3N3ww&ixlib=rb-4.0.3');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    line-height: 1.6;
+    overflow-x: hidden; /* Предотвращает горизонтальный скролл */
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.75); /* Сделаем чуть светлее, 0.75 вместо 0.9 */
+    min-height: 100vh;
+    padding: 0 20px; /* Убираем padding сверху/снизу, оставляем по бокам для контента */
+    display: flex;
+    flex-direction: column; /* Для футера внизу */
+}
+
+main {
+    flex-grow: 1; /* Чтобы main занимал все доступное пространство и прижимал футер */
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border-color); /* Используем переменную */
+    position: sticky; /* Липкий хедер */
+    top: 0;
+    z-index: 100;
+    background-color: rgba(18, 18, 18, 0.8); /* Фон для липкого хедера */
+    backdrop-filter: blur(10px); /* Размытие для липкого хедера */
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700; /* Более жирный шрифт для лого */
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(108, 92, 231, 0.5); /* Небольшая тень для лого */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0; /* Увеличим область для наведения */
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    bottom: 0px; /* Чуть ниже текста */
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 101; /* Выше навбара */
+}
+
+/* Hero Section */
+.hero {
+    display: flex; /* Flexbox для расположения контента и картинки */
+    flex-direction: column; /* По умолчанию в колонку на мобильных */
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 120px); /* Чтобы занимал почти всю высоту экрана */
+    text-align: center; /* Центрирование текста по умолчанию */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin-bottom: 50px; /* Отступ между текстом и изображением */
+}
+
+.hero h1 {
+    font-size: 4.5rem; /* Увеличим размер */
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero .subtitle { /* Новый класс для подзаголовка */
+    font-size: 1.3rem;
+    color: #bbb;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Центрируем кнопки */
+}
+
+.primary-btn, .secondary-btn {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex; /* Для центрирования текста в кнопке */
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    box-shadow: none;
+}
+
+.secondary-btn:hover {
+    transform: translateY(-3px);
+    background-color: rgba(0, 184, 148, 0.1); /* Легкий фон при наведении */
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Более выраженная тень */
+    transform: translateY(0);
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+/* Для десктопов: hero-image справа */
+@media (min-width: 900px) {
+    .hero {
+        flex-direction: row; /* В ряд на больших экранах */
+        text-align: left; /* Текст слева */
+        justify-content: space-between;
+    }
+    .hero-content {
+        margin-right: 80px; /* Отступ между контентом и картинкой */
+        margin-bottom: 0;
+    }
+    .hero-buttons {
+        justify-content: flex-start; /* Кнопки слева */
+    }
+    .hero-image {
+        flex-shrink: 0; /* Изображение не сжимается */
+        width: 500px; /* Примерная ширина изображения */
+    }
+}
+
+
+/* Section Header (для "Наши преимущества", "Частые вопросы" и т.д.) */
+.section-header {
+    text-align: center; /* Центрируем заголовок секции */
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.section-header h2 {
+    font-size: 3.2rem; /* Чуть меньше чем hero h1 */
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Features Section */
+.features-section { /* Новый класс-обертка для секции возможностей */
+    padding: 80px 0; /* Отступ сверху и снизу */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-grid { /* Это ваш бывший .features */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Чуть уменьшил minmax для лучшей адаптации */
+    gap: 30px;
+    padding: 0 20px; /* Отступы по бокам */
+}
+
+.feature-card {
+    background: var(--card-bg); /* Используем переменную */
+    border-radius: 12px; /* Чуть больше радиус */
+    padding: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color); /* Используем переменную */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+    display: flex; /* Для выравнивания контента внутри */
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание по левому краю */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* Чуть меньше смещение */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--secondary); /* Изменение цвета рамки при наведении */
+}
+
+.feature-icon {
+    width: 50px; /* Фиксированный размер для иконки */
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 184, 148, 0.1); /* Легкий фон для иконок */
+    border-radius: 10px; /* Скругление фона иконки */
+}
+
+.feature-icon img {
+    width: 70%; /* Иконка внутри занимает 70% контейнера */
+    height: 70%;
+    object-fit: contain;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.6rem; /* Чуть больше */
+    font-weight: 600;
+    color: var(--light);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #bbb;
+    flex-grow: 1; /* Чтобы текст занимал доступное пространство */
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 80px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 30px;
+    min-width: 200px;
+    flex: 1; /* Чтобы элементы занимали равное пространство */
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+    font-size: 3.5rem; /* Чуть больше */
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+
+/* Download Section */
+.download-section {
+    display: flex; /* Flexbox для контента и изображения */
+    flex-direction: column; /* По умолчанию в колонку */
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 80px auto;
+    background: var(--card-bg); /* Фон как у карточек */
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Чтобы изображение не вылезало */
+}
+
+.download-content {
+    text-align: center;
+    margin-bottom: 50px; /* Отступ перед изображением на мобильных */
+}
+
+.download-content h2 {
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.download-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.version-selector {
+    display: flex;
+    flex-direction: column; /* В колонку на мобильных */
+    align-items: center;
+    gap: 20px;
+}
+
+.version-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Перенос вкладок */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.version-tab {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.version-tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--secondary);
+}
+
+.version-tab.active {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-color: var(--secondary);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn {
+    display: flex; /* Для размещения текста и размера файла */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: auto; /* Автоматическая ширина */
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn .file-size {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.download-info {
+    display: flex;
+    flex-wrap: wrap; /* Перенос элементов */
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.download-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+    font-size: 1rem;
+}
+
+.download-info .info-item img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(240deg) brightness(100%) contrast(100%); /* Белые иконки */
+}
+
+.download-image {
+    margin-top: 50px; /* Отступ сверху на мобильных */
+}
+
+.download-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Для десктопов: download-image справа, download-content слева */
+@media (min-width: 900px) {
+    .download-section {
+        flex-direction: row; /* В ряд на больших экранах */
+        text-align: left; /* Текст слева */
+        justify-content: space-between;
+        padding: 60px 40px;
+    }
+    .download-content {
+        margin-right: 80px; /* Отступ между контентом и изображением */
+        margin-bottom: 0;
+        flex: 1; /* Чтобы контент занимал доступное пространство */
+    }
+    .download-content h2 {
+        text-align: left;
+    }
+    .download-content p {
+        text-align: left;
+    }
+    .version-selector {
+        align-items: flex-start; /* Выравнивание по левому краю */
+    }
+    .download-image {
+        margin-top: 0;
+        flex-shrink: 0;
+        width: 400px; /* Примерная ширина изображения */
+    }
+}
+
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Для скрытия ответа */
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03); /* Чуть светлее фон для вопроса */
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.faq-question h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.faq-toggle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--secondary);
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active .faq-toggle {
+    transform: rotate(45deg); /* Поворот плюсика в крестик */
+}
+
+.faq-answer {
+    padding: 0 30px;
+    max-height: 0; /* Скрываем ответ по умолчанию */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Анимация раскрытия */
+}
+
+.faq-answer p {
+    padding-bottom: 20px; /* Отступ снизу текста ответа */
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.faq-answer ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.faq-answer ol li {
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+/* Footer */
+/* Footer Styles - дополнительные стили */
+.footer-links .links-column h4 {
+    color: var(--light); /* Или другой желаемый цвет для заголовков */
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--secondary); /* Подчеркивание как на скриншоте */
+    display: inline-block; /* Чтобы подчеркивание было только под текстом */
+    padding-bottom: 5px;
+}
+
+.footer-links .links-column a {
+    display: block; /* Каждая ссылка на новой строке */
+    margin-bottom: 10px; /* Отступ между ссылками */
+    color: #ccc; /* Цвет ссылок */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links .links-column a:hover {
+    color: var(--secondary); /* Цвет при наведении */
+}
+
+/* Изменения для общей структуры футера, чтобы столбцы располагались правильно */
+footer .footer-content {
+    display: flex;
+    justify-content: space-around; /* Распределение столбцов */
+    flex-wrap: wrap; /* Перенос на новую строку на маленьких экранах */
+    gap: 40px; /* Промежуток между столбцами */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer .footer-logo {
+    text-align: left;
+    max-width: 250px; /* Примерная ширина для логотипа в футере */
+}
+
+footer .footer-logo p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.links-column {
+    text-align: left;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.footer-bottom p {
+    margin-bottom: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 60px 20px 20px; /* Отступ сверху больше, снизу меньше */
+    margin-top: 100px; /* Большой отступ сверху */
+    border-top: 1px solid var(--border-color);
+    color: #777;
+    background-color: var(--dark); /* Фон для футера */
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Перенос колонок */
+    justify-content: space-around;
+    align-items: flex-start; /* Выравнивание элементов по верху */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto; /* Отступ между верхней и нижней частью футера */
+}
+
+.footer-logo {
+    text-align: left;
+    margin-bottom: 20px; /* Отступ снизу на мобильных */
+    flex-basis: 100%; /* Занимает всю ширину на мобильных */
+    max-width: 300px; /* Ограничиваем ширину логоблока */
+}
+
+.footer-logo .logo { /* Стили для лого в футере */
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.5;
+}
+
+.links-column {
+    text-align: left;
+    margin-bottom: 20px; /* Отступ снизу на мобильных */
+    min-width: 150px; /* Минимальная ширина для колонок */
+}
+
+.links-column h4 {
+    font-size: 1.1rem;
+    color: var(--light);
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative; /* Для подчеркивания */
+}
+
+.links-column h4::after { /* Подчеркивание заголовков колонок */
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background: var(--secondary);
+    bottom: -8px;
+    left: 0;
+}
+
+.links-column a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.links-column a:hover {
+    color: var(--secondary);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Более тонкая граница */
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95); /* Чуть темнее на мобильных */
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        z-index: 90; /* Ниже кнопки меню, но выше контента */
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Кнопки в колонку на мобильных */
+        gap: 15px;
+    }
+
+    .primary-btn, .secondary-btn {
+        width: 80%; /* Кнопки пошире */
+        max-width: 300px;
+    }
+    
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+    }
+
+    .stat-item {
+        min-width: 150px;
+        padding: 20px;
+    }
+    .stat-number {
+        font-size: 2.8rem;
+    }
+
+    .download-section {
+        padding: 40px 20px;
+    }
+    .download-content h2 {
+        font-size: 2.5rem;
+    }
+    .version-tabs {
+        flex-direction: column;
+        width: 100%;
+    }
+    .version-tab {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center; /* Центрируем колонки футера */
+        text-align: center;
+    }
+    .footer-logo {
+        text-align: center;
+    }
+    .links-column {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .links-column h4::after {
+        left: 50%;
+        transform: translateX(-50%); /* Центрируем подчеркивание */
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }

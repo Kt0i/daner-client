@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daner Client | Premium Minecraft Cheat</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <div class="logo">DanerClient</div>
+            <nav>
+                <button class="mobile-menu-btn">☰</button>
+                <div class="nav-links">
+                    <a href="#features">Возможности</a>
+                    <a href="#download">Скачать</a>
+                    <a href="#about">О нас</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="fade-in">Daner Client</h1>
+                    <p class="subtitle fade-in delay-1">Премиум чит для Minecraft с передовыми технологиями обхода защиты</p>
+                    <div class="hero-buttons fade-in delay-2">
+                        <a href="#download" class="primary-btn">Скачать сейчас</a>
+                        <a href="#features" class="secondary-btn">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-image fade-in delay-3">
+                    <img src="./images/client-preview.png" alt="Daner Client Interface">
+                </div>
+            </section>
+            
+            <section class="features-section" id="features">
+                <div class="section-header">
+                    <h2>Наши Преимущества</h2>
+                    <p>Daner Client разработан с использованием передовых технологий, чтобы обеспечить вам максимальное превосходство в игре без компромиссов.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/performance.svg" alt="Performance Icon"></div>
+                        <h3>Оптимизация производительности</h3>
+                        <p>Наш клиент разработан для максимальной производительности, обеспечивая плавную игру даже на слабых ПК.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/performance2.svg" alt="Performance Icon"></div>
+                        <h3>Красивый внешний вид</h3>
+                        <p>В нашем клиенте присутствует большое количество визуальных функций, которые сделают вашу игру более красочной. А так же вы можете настроить оформление клиента под себя, сделав его по настоящему красивым.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/performance1.svg" alt="Performance Icon"></div>
+                        <h3>Настраиваемость</h3>
+                        <p>В нашем клиенте вы можете настроить практически любую функцию под себя, а так же использовать конфигурации других пользователей. Благодаря этому вы сможете использовать наш клиент на максимуме его возможностей.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/undetectable.svg" alt="Undetectable Icon"></div>
+                        <h3>Полная незаметность</h3>
+                        <p>Используем уникальные методы обхода для обеспечения максимальной незаметности.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/customizable.svg" alt="Customizable Icon"></div>
+                        <h3>Гибкая настройка</h3>
+                        <p>Полностью настраиваемый интерфейс и параметры под ваш стиль игры.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="./icons/updates.svg" alt="Updates Icon"></div>
+                        <h3>Частые обновления</h3>
+                        <p>Регулярные обновления обеспечивают совместимость с новыми версиями Minecraft и защиту от анти-читов.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="user-count">10K+</div>
+                    <p>Активных Пользователей</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" id="update-count">50+</div>
+                    <p>Еженедельных Обновлений</p>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number" id="version-count">15+</div>
+                    <p>Поддерживаемых Версий</p>
+                </div>
+            </section>
+
+            <section class="download-section" id="download">
+                <div class="download-content">
+                    <h2>Скачайте Daner Client сегодня</h2>
+                    <p>Начните доминировать на серверах с самым продвинутым читом для Minecraft. Выберите свою версию:</p>
+                    <div class="version-selector">
+                        <div class="version-tabs">
+                            <div class="version-tab active" data-version="1.8.9">1.8.9</div>
+                            <div class="version-tab" data-version="1.12.2">1.12.2</div>
+                            <div class="version-tab" data-version="1.16.5">1.16.5</div>
+                            <div class="version-tab" data-version="1.19.4">1.19.4</div>
+                        </div>
+                        <a href="#" id="download-btn" class="download-btn">
+                            <span>Скачать клиент</span>
+                            <span class="file-size">(25.7 МБ)</span>
+                        </a>
+                        <p id="download-status" style="margin-top: 15px; font-size: 0.9rem; color: #ccc;"></p>
+                    </div>
+                    <div class="download-info">
+                        <div class="info-item"><img src="./icons/check.svg" alt="Check">Бесплатные обновления</div>
+                        <div class="info-item"><img src="./icons/check.svg" alt="Check">Множество версий</div>
+                        <div class="info-item"><img src="./icons/check.svg" alt="Check">Гарантия незаметности</div>
+                    </div>
+                </div>
+                <div class="download-image">
+                    <img src="./images/download-preview.png" alt="Download Preview">
+                </div>
+            </section>
+
+            <section class="faq-section" id="faq">
+                <div class="section-header">
+                    <h2>Часто Задаваемые Вопросы</h2>
+                    <p>Найдите ответы на самые распространенные вопросы о Daner Client.</p>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Что такое Daner Client?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Daner Client — это премиум-чит для Minecraft, разработанный для улучшения вашего игрового опыта. Он предлагает широкий спектр функций, от помощи в PvP до обхода анти-читов, обеспечивая при этом высокую производительность и незаметность.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Безопасно ли использовать Daner Client?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Мы используем передовые методы обхода защиты, чтобы минимизировать риск обнаружения. Наши обновления регулярно адаптируются под изменения в анти-чит системах, чтобы обеспечить вашу безопасность.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Как установить Daner Client?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Процесс установки прост:</p>
+                            <ol>
+                                <li>Скачайте инсталлятор с нашего сайта.</li>
+                                <li>Запустите его и следуйте инструкциям.</li>
+                                <li>Выберите нужную версию Minecraft.</li>
+                                <li>Наслаждайтесь игрой с Daner Client!</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Какие версии Minecraft поддерживаются?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Daner Client поддерживает широкий спектр версий Minecraft, включая 1.8.9, 1.12.2, 1.16.5, 1.19.4 и другие. Мы постоянно добавляем поддержку новых версий с каждым обновлением.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">DanerClient</div>
+                    <p>Премиум чит для Minecraft</p>
+                </div>
+                
+                <div class="links-column">
+                    <h4>Навигация</h4>
+                    <a href="#features">Возможности</a>
+                    <a href="#download">Скачать</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                
+                <div class="links-column">
+                        <h4>Поддержка</h4>
+                        <a href="https://discord.gg/yourdiscord" target="_blank">Discord</a>
+                        <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
+                        <a href="https://vk.com/yourvk" target="_blank">VK</a>
+                    </div>
+                
+                <div class="links-column">
+                        <h4>Правовая информация</h4>
+                        <a href="/terms.html">Условия использования</a>
+                        <a href="/privacy.html">Политика конфиденциальности</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Daner Client. Все права защищены.</p>
+                <p>Не аффилирован с Mojang или Microsoft.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
